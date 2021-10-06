@@ -1,0 +1,40 @@
+name: Static analyze
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze:
+    name: Static analyze
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Install Flutter 🔧
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Install dependencies 🔧
+        run: flutter pub get
+
+      - name: Run dependency validator 🔍
+        run: |
+          dart pub global activate dependency_validator
+          dart pub global run dependency_validator:dependency_validator
+
+      - name: Run analyzer 🔍
+        run: flutter analyze --no-pub --fatal-warnings --fatal-infos .
+
+      - name: Run formatter 🔍
+        run: flutter format --set-exit-if-changed .
