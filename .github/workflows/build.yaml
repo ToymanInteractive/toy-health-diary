@@ -1,4 +1,4 @@
-name: Build web app on Github gh pages
+name: Build app
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-web:
-    name: Build web app on Github gh pages
+    name: Build web app and deploy on Github gh pages
 
     runs-on: ubuntu-latest
 
