@@ -92,7 +92,7 @@ dart_code_metrics:
         exclude:
           - test/**
     - prefer-correct-type-name
-    - prefer_extracting_callbacks
+    - prefer-extracting-callbacks
     - prefer-first
     - prefer-intl-name
     - prefer-last
