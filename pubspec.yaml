@@ -1,4 +1,4 @@
-name: toy_health
+name: toy_health_diary
 description: An application for support you to lead a healthy lifestyle.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
