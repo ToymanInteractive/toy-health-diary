@@ -1,0 +1,6 @@
+{
+    "hosting": {
+        "site": "health-diary",
+        "public": "build/web"
+    }
+}

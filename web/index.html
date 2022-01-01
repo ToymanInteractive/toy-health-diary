@@ -29,6 +29,30 @@
 
   <title>Health diary</title>
   <link rel="manifest" href="manifest.json">
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDvhat36WvUR2Ed0JPJz2vv3dBTrADz9aw",
+      authDomain: "toy-health.firebaseapp.com",
+      projectId: "toy-health",
+      storageBucket: "toy-health.appspot.com",
+      messagingSenderId: "721636547237",
+      appId: "1:721636547237:web:9846cd2892527119190b4c",
+      measurementId: "G-S1L36DP12P"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 
 <body>

@@ -7,7 +7,7 @@ on:
     paths:
       - "lib/**"
       - "test/**"
-      - ".github/workflows/package_analyze.yaml"
+      - ".github/workflows/build_app.yaml"
       - "analysis_options.yaml"
       - "pubspec.yaml"
   push:
@@ -16,7 +16,7 @@ on:
     paths:
       - "lib/**"
       - "test/**"
-      - ".github/workflows/package_analyze.yaml"
+      - ".github/workflows/build_app.yaml"
       - "analysis_options.yaml"
       - "pubspec.yaml"
 
@@ -123,3 +123,33 @@ jobs:
           curl -sL https://firebase.tools | bash
           sed -n "/^## Unreleased$/,/^## /p" CHANGELOG.md > UNRELEASED.MD
           firebase appdistribution:distribute --app ${{ secrets.FIREBASE_ANDROID_ID }} --release-notes-file UNRELEASED.MD --groups flutter-testers --token ${{ secrets.FIREBASE_TOKEN }} ./build/app/outputs/flutter-apk/app-release.apk
+
+  build-web:
+    name: "build web"
+    needs: testing
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build web
+        run: flutter build web
+
+      - name: Deploy to Firebase
+        if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+        run: |
+          curl -sL https://firebase.tools | bash
+          firebase deploy --only hosting:health-diary --project toy-health --token ${{ secrets.FIREBASE_TOKEN }}
