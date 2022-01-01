@@ -6,3 +6,7 @@ An application for support you to lead a healthy lifestyle.
 
 * Android 4.1 (16 SDK)
 * iOS 10 (iPhone 5, iPad 4)
+
+## Links
+
+* [Web version](https://health-diary.web.app/)
