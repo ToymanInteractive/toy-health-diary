@@ -1,4 +1,4 @@
-name: toy_health_diary
+name: health_diary
 description: An application for support you to lead a healthy lifestyle.
 publish_to: "none"
 version: 0.0.1
