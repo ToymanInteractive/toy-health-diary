@@ -1,6 +1,6 @@
 {
-    "name": "toy_health_diary",
-    "short_name": "toy_health_diary",
+    "name": "health_diary",
+    "short_name": "health_diary",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

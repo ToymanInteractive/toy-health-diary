@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(toy_health_diary LANGUAGES CXX)
+project(health_diary LANGUAGES CXX)
 
-set(BINARY_NAME "toy_health_diary")
+set(BINARY_NAME "health_diary")
 
 cmake_policy(SET CMP0063 NEW)
 

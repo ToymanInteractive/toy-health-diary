@@ -22,4 +22,4 @@ jobs:
       - name: Build app ⚙️
         uses: bluefireteam/flutter-gh-pages@v7
         with:
-          baseHref: /toy-health/
+          baseHref: /health-diary/

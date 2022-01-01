@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "toy_health_diary")
-set(APPLICATION_ID "com.example.toy_health_diary")
+set(BINARY_NAME "Health diary")
+set(APPLICATION_ID "com.toyman.health_diary")
 
 cmake_policy(SET CMP0063 NEW)
 
