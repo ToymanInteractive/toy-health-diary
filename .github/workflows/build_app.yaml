@@ -1,4 +1,4 @@
-name: "Analyze package"
+name: "Build application"
 
 on:
   pull_request:
@@ -31,13 +31,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-
-      - name: Checkout
-        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: flutter pub get
@@ -70,13 +70,13 @@ jobs:
         shell: bash
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-
-      - name: Checkout
-        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: flutter pub get
@@ -92,3 +92,34 @@ jobs:
           path: reports/tests.json
           reporter: dart-json
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-apk:
+    name: "build apk"
+    needs: testing
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build apk
+        run: flutter build apk
+
+      - name: Deploy to Firebase
+        if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+        run: |
+          curl -sL https://firebase.tools | bash
+          sed -n "/^## Unreleased$/,/^## /p" CHANGELOG.md > UNRELEASED.MD
+          firebase appdistribution:distribute --app ${{ secrets.FIREBASE_ANDROID_ID }} --release-notes-file UNRELEASED.MD --groups flutter-testers --token ${{ secrets.FIREBASE_TOKEN }} ./build/app/outputs/flutter-apk/app-release.apk

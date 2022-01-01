@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "721636547237",
+    "project_id": "toy-health",
+    "storage_bucket": "toy-health.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721636547237:android:2718f2c681043fbb190b4c",
+        "android_client_info": {
+          "package_name": "com.toyman.health_diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721636547237-676c0u4bs3sk6irjip0574e6tnf2cbl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoGCWUutUQ_Ubt3r6LuUysMflIi6aLGgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721636547237-676c0u4bs3sk6irjip0574e6tnf2cbl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
