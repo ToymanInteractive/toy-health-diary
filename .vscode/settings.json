@@ -4,6 +4,7 @@
         "bools",
         "cyclomatic",
         "dkrutskikh",
+        "fastlane",
         "ints",
         "nullsafety",
         "pubspec",
