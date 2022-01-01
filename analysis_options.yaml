@@ -1,13 +1,16 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  plugins:
-    - dart_code_metrics
   exclude:
     - "build/**"
     - "script/**"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+  language:
+    strict-inference: true
+    strict-raw-types: true
+  plugins:
+    - dart_code_metrics
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
@@ -188,7 +191,7 @@ linter:
     prefer_final_locals: true
     prefer_if_elements_to_conditional_expressions: true
     prefer_interpolation_to_compose_strings: true
-    prefer_mixin: true
+    prefer_mixin: false
     prefer_single_quotes: true
     public_member_api_docs: false
     require_trailing_commas: true
@@ -198,6 +201,7 @@ linter:
     type_annotate_public_apis: true
     unawaited_futures: true
     unnecessary_await_in_return: true
+    unnecessary_constructor_name: true
     unnecessary_lambdas: true
     unnecessary_null_aware_assignments: true
     unnecessary_null_checks: true

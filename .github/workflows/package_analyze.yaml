@@ -1,13 +1,6 @@
 name: "Analyze package"
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "lib/**"
-      - "test/**"
-      - ".github/workflows/package_analyze.yaml"
   pull_request:
     branches:
       - main
@@ -15,6 +8,17 @@ on:
       - "lib/**"
       - "test/**"
       - ".github/workflows/package_analyze.yaml"
+      - "analysis_options.yaml"
+      - "pubspec.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - "lib/**"
+      - "test/**"
+      - ".github/workflows/package_analyze.yaml"
+      - "analysis_options.yaml"
+      - "pubspec.yaml"
 
 jobs:
   analysis:
@@ -51,6 +55,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           folders: "lib, test"
+          check_unused_files: true
+          pull_request_comment: true
 
       - name: Verify formatting
         run: flutter format --set-exit-if-changed .
