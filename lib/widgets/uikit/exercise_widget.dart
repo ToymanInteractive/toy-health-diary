@@ -22,7 +22,7 @@ class ExerciseWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(size * (1.0 - _outlineWeight - _imageWeight)),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(size),
+          borderRadius: BorderRadius.circular(size * _imageWeight),
           child: Image(
             image: image,
             height: size * _imageWeight,
