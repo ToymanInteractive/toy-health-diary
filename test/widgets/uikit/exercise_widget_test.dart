@@ -8,7 +8,7 @@ void main() {
       ..addScenario(
         'Exercise widget',
         const ExerciseWidget(
-          avatar: AssetImage('assets/stubs/exercise.png'),
+          image: AssetImage('assets/stubs/exercise.png'),
           size: 48,
         ),
       );

@@ -2,28 +2,31 @@ import 'package:flutter/widgets.dart';
 
 import 'circle_painter.dart';
 
+const _imageWeight = 0.875;
+const _outlineWeight = 0.0625;
+
 class ExerciseWidget extends StatelessWidget {
-  final ImageProvider avatar;
+  final ImageProvider image;
   final double size;
 
   const ExerciseWidget({
     Key? key,
-    required this.avatar,
+    required this.image,
     required this.size,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: CirclePainter(width: size * 0.03125),
+      painter: CirclePainter(width: size * _outlineWeight),
       child: Padding(
-        padding: EdgeInsets.all(size * 0.0625),
+        padding: EdgeInsets.all(size * (1.0 - _outlineWeight - _imageWeight)),
         child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(size)),
+          borderRadius: BorderRadius.circular(size),
           child: Image(
-            image: avatar,
-            height: size * 0.875,
-            width: size * 0.875,
+            image: image,
+            height: size * _imageWeight,
+            width: size * _imageWeight,
           ),
         ),
       ),

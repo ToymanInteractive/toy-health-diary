@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/rendering.dart';
 
 class CirclePainter extends CustomPainter {
@@ -15,10 +13,10 @@ class CirclePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = color
-      ..strokeWidth = width
+      ..strokeWidth = width * 0.5
       ..style = PaintingStyle.stroke;
 
-    canvas.drawArc(Offset.zero & size, 0, pi * 2, false, paint);
+    canvas.drawCircle(size.center(Offset.zero), size.width * 0.5, paint);
   }
 
   @override

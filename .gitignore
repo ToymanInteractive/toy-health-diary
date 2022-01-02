@@ -49,6 +49,7 @@ app.*.map.json
 UNRELEASED.MD
 
 # Flutter tests related
+**/failures/
 /coverage/
 /reports/
 /test/fake_test.dart
