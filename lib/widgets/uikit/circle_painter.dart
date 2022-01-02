@@ -6,7 +6,7 @@ class CirclePainter extends CustomPainter {
 
   const CirclePainter({
     required this.width,
-    this.color = const Color(0xFF000000),
+    required this.color,
   });
 
   @override

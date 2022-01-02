@@ -9,16 +9,20 @@ void main() {
     testGoldens('Exercise widget golden test', (tester) async {
       final builder = GoldenBuilder.column()
         ..addScenario(
-          'Exercise widget',
+          'Exercise widget with image',
           const ExerciseWidget(
             image: AssetImage('assets/stubs/exercise.png'),
             size: 48,
           ),
+        )
+        ..addScenario(
+          'Exercise widget with fallback icon',
+          const ExerciseWidget(size: 48),
         );
 
       await tester.pumpWidgetBuilder(
         builder.build(),
-        surfaceSize: const Size(142, 105),
+        surfaceSize: const Size(286, 194),
       );
 
       await screenMatchesGolden(tester, 'exercise_widget');
@@ -26,10 +30,7 @@ void main() {
 
     testWidgets('widget test', (tester) async {
       await tester.pumpWidgetBuilder(
-        const ExerciseWidget(
-          image: AssetImage('assets/stubs/exercise.png'),
-          size: 48,
-        ),
+        const ExerciseWidget(size: 48),
       );
 
       expect(
