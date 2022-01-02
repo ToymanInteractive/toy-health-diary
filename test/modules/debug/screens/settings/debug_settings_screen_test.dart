@@ -1,5 +1,4 @@
-import 'dart:async';
-
+import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:health_diary/modules/debug/screens/settings/debug_settings_screen.dart';
 import 'package:health_diary/modules/debug/screens/settings/debug_settings_screen_model.dart';
@@ -10,16 +9,33 @@ class DebugSettingsScreenModelMock extends Mock
     implements DebugSettingsScreenModel {}
 
 void main() {
-  testGoldens('Debug settings screen test', (tester) async {
-    final model = DebugSettingsScreenModelMock();
+  group('Debug settings screen', () {
+    late DebugSettingsScreenModelMock model;
 
-    when(model.fetchDeviceModel)
-        .thenAnswer((_) => Future<String>.value('mock device'));
+    setUp(() {
+      model = DebugSettingsScreenModelMock();
 
-    await tester.pumpWidgetBuilder(
-      DebugSettingsScreen(wmFactory: (_) => DebugSettingsScreenWM(model)),
-    );
+      when(model.fetchDeviceModel)
+          .thenAnswer((_) => Future<String>.value('mock device'));
+    });
 
-    await multiScreenGolden(tester, 'debug_settings_screen');
+    testGoldens('golden test', (tester) async {
+      await tester.pumpWidgetBuilder(
+        DebugSettingsScreen(wmFactory: (_) => DebugSettingsScreenWM(model)),
+      );
+
+      await multiScreenGolden(tester, 'debug_settings_screen');
+    });
+
+    testWidgets('widget test', (tester) async {
+      await tester.pumpWidgetBuilder(
+        DebugSettingsScreen(wmFactory: (_) => DebugSettingsScreenWM(model)),
+      );
+
+      expect(find.text('Device: mock device'), findsOneWidget);
+      expect(find.textContaining('screen:'), findsOneWidget);
+      expect(find.textContaining('screen safe area:'), findsOneWidget);
+      expect(find.textContaining('text scale:'), findsOneWidget);
+    });
   });
 }
