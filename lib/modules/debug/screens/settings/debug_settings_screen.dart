@@ -42,7 +42,7 @@ class DebugSettingsScreen extends ElementaryWidget<DebugSettingsScreenWM> {
                     return Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
@@ -53,8 +53,8 @@ class DebugSettingsScreen extends ElementaryWidget<DebugSettingsScreenWM> {
                               'pixel ratio: ${state.devicePixelRatio}\n'
                               'width in pix: ${state.size.width * state.devicePixelRatio}\n'
                               'height in pix: ${state.size.height * state.devicePixelRatio}',
+                              softWrap: true,
                             ),
-                            const SizedBox(width: 16),
                             Text(
                               'screen safe area:\n'
                               '\n'
@@ -62,6 +62,8 @@ class DebugSettingsScreen extends ElementaryWidget<DebugSettingsScreenWM> {
                               'top: ${state.padding.top}\n'
                               'right: ${state.padding.right}\n'
                               'bottom: ${state.padding.bottom}',
+                              softWrap: true,
+                              overflow: TextOverflow.clip,
                             ),
                           ],
                         ),
