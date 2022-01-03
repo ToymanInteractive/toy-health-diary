@@ -42,7 +42,7 @@ class DebugSettingsScreen extends ElementaryWidget<DebugSettingsScreenWM> {
                     return Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(

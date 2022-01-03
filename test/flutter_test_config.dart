@@ -29,5 +29,5 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 // Temporary downscale while bug not fixed https://github.com/eBay/flutter_glove_box/issues/119
 Device _mapDevice(Device originalDevice) => originalDevice.copyWith(
       size: originalDevice.size / originalDevice.devicePixelRatio,
-      devicePixelRatio: 1,
+      safeArea: originalDevice.safeArea * originalDevice.devicePixelRatio,
     );
