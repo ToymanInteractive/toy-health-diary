@@ -20,10 +20,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
       await testMain();
     },
     config: GoldenToolkitConfiguration(
-      defaultDevices: [
-        ..._devices.map(_mapDevice),
-        ..._devices.map(_mapDevice).map((device) => device.dark()),
-      ],
+      defaultDevices: _devices.map(_mapDevice).toList(),
       enableRealShadows: true,
     ),
   );

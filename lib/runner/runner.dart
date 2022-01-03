@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:health_diary/services/theme_service.dart';
 
 import '../app/app.dart';
 
@@ -10,5 +11,5 @@ Future<void> runApplication() async {
   // Freeze orientation
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  runApp(const App());
+  runApp(const App(themeService: ThemeService()));
 }

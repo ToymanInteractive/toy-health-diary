@@ -3,6 +3,7 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:health_diary/modules/debug/screens/settings/debug_settings_screen.dart';
 import 'package:health_diary/modules/debug/screens/settings/debug_settings_screen_model.dart';
 import 'package:health_diary/modules/debug/screens/settings/debug_settings_screen_wm.dart';
+import 'package:health_diary/services/theme_service.dart';
 import 'package:mocktail/mocktail.dart';
 
 class DebugSettingsScreenModelMock extends Mock
@@ -22,6 +23,7 @@ void main() {
     testGoldens('golden test', (tester) async {
       await tester.pumpWidgetBuilder(
         DebugSettingsScreen(wmFactory: (_) => DebugSettingsScreenWM(model)),
+        wrapper: materialAppWrapper(theme: const ThemeService().lightTheme),
       );
 
       await multiScreenGolden(tester, 'debug_settings_screen');
@@ -30,6 +32,7 @@ void main() {
     testWidgets('widget test', (tester) async {
       await tester.pumpWidgetBuilder(
         DebugSettingsScreen(wmFactory: (_) => DebugSettingsScreenWM(model)),
+        wrapper: materialAppWrapper(theme: const ThemeService().lightTheme),
       );
 
       expect(find.text('Device: mock device'), findsOneWidget);
